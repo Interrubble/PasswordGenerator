@@ -1,22 +1,21 @@
 function generatePassword() {
   //TODO: your code goes here
-  // Assigning variables
+  // Assigning variables, two empty banks for storing criteria and displaying password, and one for each character type; uppercase letters, lowercase letters, numbers, and special characters
   var generation = [];
   var piggybank = [];
   var alphaUp = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
   var alphaLow = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
   var numeral = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
   var special = ["`", "~", "!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "[", "{", "]", "}", "|", ";", ":", ",", "<", ".", ">", "/", "?", "-", "_", "=", "+"];
-  // Randomly generate characters
-  Math.floor(Math.random() * alphaUp.length)
 
   // Prompting user for password criteria
   var charLength = Number(prompt("Pick a character length between 8-128:"))
-  // Generate password and activate alerts for false inputs
+  // Activate prompts to determine desired criteria and activate alerts for false inputs
   if ( Number.isInteger(charLength)===false || charLength < 8 || charLength > 128) {
     alert("Please only choose a number between 8-128!")
     generatePassword()
   } else {
+    // Create variable for all uppercase letters
     var charType1 = confirm("Do you want upper case letter?")
     if (charType1) {
       piggybank.push(...alphaUp)
@@ -37,6 +36,7 @@ function generatePassword() {
       alert("Piggybank empty!")
       generatePassword()
     }
+    // Logging progress
     console.log(charLength, charType1, charType2, charType3, charType4, piggybank)
     // Generate string of random characters from 8-128 characters long
     function develop() {
@@ -45,6 +45,7 @@ function generatePassword() {
         console.log(generation)
       }
     };
+    // Call back function to pull the new randomly generated password
     develop();
     
   }
